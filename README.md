@@ -1,4 +1,4 @@
-# Web Based VS Code with PHP extensions installed
+# Web Based VS Code with AWS tools installed
 
 https://github.com/cdr/code-server project with neccessary PHP extensions for XDebug to work, and Telemetry and Automatic Updates disabled
 
