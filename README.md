@@ -39,3 +39,6 @@ Need to run within docker compose?
 ## Built With
 
 - https://github.com/cdr/code-server latest [LICENSE-code-server.txt](LICENSE-code-server.txt)
+
+## Credits
+- Jeff Beagley - https://github.com/jeffbeagley/vscode_php/
