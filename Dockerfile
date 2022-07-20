@@ -79,7 +79,7 @@ RUN code-server --install-extension AmazonWebServices.aws-toolkit-vscode
 
 # Setup entrypoint file and apply execution rights
 COPY ./entrypoint.sh /bootstrap/entrypoint.sh
-COPY ./vscode/settings.json /home/coder/.local/share/code-server/User/settings.json
+COPY --chown=coder:coder ./vscode/settings.json /home/coder/.local/share/code-server/User/settings.json
 
 # Run IDE without updates and telemetry
 ENTRYPOINT ["/bootstrap/entrypoint.sh"]

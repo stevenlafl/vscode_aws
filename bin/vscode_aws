@@ -1,0 +1,25 @@
+if [ $# -ne 1 ]; then
+  echo "Usage: <aws profile name>"
+  echo "Mounts the current directory with default aws credentials set as your specified profile"
+  exit
+fi
+
+SEARCH="\[$1\]"
+
+if ! grep -q ^$SEARCH ~/.aws/credentials ; then
+  echo "AWS Profile \"$1\" not found"
+  exit
+fi;
+
+AWS_ACCESS_KEY_ID=$(grep -A 2 $SEARCH ~/.aws/credentials | grep -Po "aws_access_key_id=\K(.*)" | sed -e 's/\s\+//g')
+AWS_SECRET_ACCESS_KEY=$(grep -A 2 $SEARCH ~/.aws/credentials | grep -Po "aws_secret_access_key=\K(.*)" | sed -e 's/\s\+//g')
+AWS_DEFAULT_REGION=us-east-1
+
+docker run -it --rm --name vscode_aws -d \
+  -p 8080:8080 \
+  -e AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID" \
+  -e AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" \
+  -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
+  -v $(pwd):/home/coder/project \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  stevenlafl/vscode_aws
