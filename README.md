@@ -19,14 +19,14 @@ In order to run this container you'll need docker installed.
 Run
 
 ```shell
-docker run -it -p 8080:8080 jeffbeagley/vscode_php -v ./:/home/coder/project
+docker run -it -p 8080:8080 stevenlafl/vscode_aws -v ./:/home/coder/project
 ```
 
 Need to run within docker compose?
 
     ide:
         container_name: '${PROJECT_NAME}_ide'
-        image: jeffbeagley/vscode_php
+        image: stevenlafl/vscode_aws
         volumes:
           - ./:/home/coder/project
         ports:
@@ -34,8 +34,8 @@ Need to run within docker compose?
 
 #### Volumes
 
-- `/home/coder/project` - Mount your local PHP project into this folder
+- `/home/coder/project` - Mount your local project into this folder
 
 ## Built With
 
-- https://github.com/cdr/code-server v3.2.0 [LICENSE-code-server.txt](LICENSE-code-server.txt)
+- https://github.com/cdr/code-server latest [LICENSE-code-server.txt](LICENSE-code-server.txt)
