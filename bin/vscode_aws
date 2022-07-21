@@ -21,5 +21,6 @@ docker run -it --rm --name vscode_aws -d \
   -e AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY" \
   -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
   -v $(pwd):/home/coder/project \
+  -v $HOME/.local/vscode_keytar:/home/coder/.local/creds \
   -v /var/run/docker.sock:/var/run/docker.sock \
   stevenlafl/vscode_aws

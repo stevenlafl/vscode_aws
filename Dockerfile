@@ -51,6 +51,10 @@ RUN curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03
 RUN curl -L "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp \
   && mv /tmp/eksctl /usr/local/bin/eksctl
 
+# Install Keytar replacement
+# Places credentials in $HOME/.local/creds/keytar.json
+RUN curl -L https://raw.githubusercontent.com/stevenlafl/node-keytar/master/lib/keytar.js -o /usr/lib/code-server/lib/vscode/node_modules/keytar/lib/keytar.js
+
 USER coder
 
 # Install standard extensions
